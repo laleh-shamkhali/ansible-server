@@ -1,0 +1,3 @@
+ - copy:
+           content: "your first test line here"
+           dest: "/tmp/test1.txt"
