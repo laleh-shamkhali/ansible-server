@@ -1,7 +1,8 @@
  ---
-# create a file
+- hosts: all
   tasks:
-          # create a new file on each host
-          - copy: 
-                content: "your first test line here"
-                dest: "/tmp/test1.txt"
+  - name: Ansible create file if it doesn't exist example
+    file:
+      path: "/tmp/devops_server.txt"
+      state: touch
+  ...
