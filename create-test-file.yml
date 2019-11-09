@@ -1,6 +1,5 @@
  ---
 # create a file
-  remote_user: root
   tasks:
           # create a new file on each host
           - copy: 
