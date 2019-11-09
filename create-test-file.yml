@@ -1,3 +1,8 @@
- - copy:
-           content: "your first test line here"
-           dest: "/tmp/test1.txt"
+ ---
+# create a file
+  remote_user: root
+  tasks:
+          # create a new file on each host
+          - copy: 
+                content: "your first test line here"
+                dest: "/tmp/test1.txt"
