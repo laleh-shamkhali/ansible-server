@@ -4,5 +4,5 @@
   tasks:
   - name: Ansible create file if it doesn't exist example
     file:
-      path: "/tmp/devops_server_2.txt"
+      path: "/tmp/2-test.txt"
       state: touch
