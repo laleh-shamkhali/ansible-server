@@ -1,5 +1,5 @@
 ---
-- hosts: testhost1
+- hosts: all
 
   tasks:
   - name: Ansible create file if it doesn't exist example
