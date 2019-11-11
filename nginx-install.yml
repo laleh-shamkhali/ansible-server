@@ -28,3 +28,8 @@
     service:
       name: nginx
       state: started
+      
+  - name: Start php-fpm
+    service:
+      name: php-fpm
+      state: started
