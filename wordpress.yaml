@@ -1,0 +1,53 @@
+- name: Install WordPress
+  hosts: all
+  become: true
+  become_user: root
+  gather_facts: true
+  tasks:
+    - name: Download and Extract WorPress
+      unarchive:
+        src: https://wordpress.org/latest.tar.gz
+        dest: /var/www//usr/share/nginx/html/mynginxweb.local
+        remote_src: yes
+        
+    - name: Rename Site directory
+      copy:
+        remote_src: True 
+        src: /usr/share/nginx/html/wordpress
+        dest: /usr/share/nginx/html/mynginxweb.local
+        
+    - name: Recursively remove wordpress directory
+      file:
+        path: /usr/share/nginx/html/wordpress
+        state: absent
+
+    - name: Restart Nginx
+      service:
+        name: nginx
+        state: restarted
+
+    - name: Copy sample config file
+      command: mv /usr/share/nginx/html/mynginxweb.local/wp-config-sample.php /usr/share/nginx/html/mynginxweb.local/wp-config.php
+
+    - name: Update Wordpress config file
+      lineinfile:
+        path: /usr/share/nginx/html/mynginxweb.local/wp-config.php
+        regexp: "{{item.regexp}}"
+        line: "{{item.line}}"
+      with_items:
+        - {'regexp': "define\\( 'DB_NAME', '(.)+' \\);", 'line': "define( 'DB_NAME', 'wordpress' );"}
+        - {'regexp': "define\\( 'DB_USER', '(.)+' \\);", 'line': "define( 'DB_USER', 'wpuser' );"}
+        - {'regexp': "define\\( 'DB_PASSWORD', '(.)+' \\);", 'line': "define( 'DB_PASSWORD', 'wpuserpassword' );"}
+
+    - name: Update ownership to Nginx user
+      file:
+        path: /usr/share/nginx/html/mynginxweb.local/
+        state: directory
+        recurse: yes
+        owner: nginx
+
+    - name: Set the correct permissions on Wordpress directories
+      command: find /usr/share/nginx/html/mynginxweb.local/ -type d -exec chmod 750 {} \;
+
+    - name: Set the correct permissions for Wordpress files
+      command: find /usr/share/nginx/html/mynginxweb.local/ -type f -exec chmod 640 {} \;
