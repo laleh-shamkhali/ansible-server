@@ -30,6 +30,11 @@
       src: /etc/nginx/conf.d/default.conf 
       dest: /etc/nginx/conf.d/default.conf-backup
       
+  - name: Remove old files default.conf
+    file: 
+      path: /etc/nginx/conf.d/default.conf 
+      state: absent
+      
   - name: Start NGiNX
     service:
       name: nginx
