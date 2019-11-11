@@ -18,6 +18,11 @@
     template:
       src: /static_files/index.html
       dest: /usr/share/nginx/html/index.html
+      
+  - name: Insert config file 
+    template:
+      src: /static_files/mynginxweb.local.conf
+      dest: /etc/nginx/conf.d/mynginxweb.local.conf
 
   - name: Start NGiNX
     service:
