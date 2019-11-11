@@ -29,7 +29,7 @@
           firstmatch: yes
           state: present  
         register: lineinfileexample
-         
-   handlers:
+        
+   handlers:     
    - name: restart ntp
      service: name=ntpd state=restarted
