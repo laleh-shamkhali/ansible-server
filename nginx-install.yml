@@ -26,9 +26,9 @@
       
   - name: Rename the default.conf file 
     copy: 
-      remote_src=True 
-      src=/etc/nginx/conf.d/default.conf 
-      dest=/etc/nginx/conf.d/default.conf-backup
+      remote_src: True 
+      src: /etc/nginx/conf.d/default.conf 
+      dest: /etc/nginx/conf.d/default.conf-backup
       
   - name: Start NGiNX
     service:
