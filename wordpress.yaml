@@ -7,7 +7,7 @@
     - name: Download and Extract WorPress
       unarchive:
         src: https://wordpress.org/latest.tar.gz
-        dest: /usr/share/nginx/html/mynginxweb.local
+        dest: /usr/share/nginx/html/wordpress
         remote_src: yes
         
     - name: Rename Site directory
