@@ -18,13 +18,13 @@
       regexp: '(.*centos.pool.ntp.org.*)'
       replace: '#\1'
       
-        tasks:
-    - name: Ansible insert a line after centos.pool.ntp.org
-      lineinfile:
-        path: /etc/hosts
-        line: 'server 192.168.100.12 iburst'
-        insertbefore: .*3-centos.pool.ntp.org
+     tasks:
+   - name: Ansible insert a line after centos.pool.ntp.org
+     lineinfile:
+       path: /etc/hosts
+       line: 'server 192.168.100.12 iburst'
+       insertbefore: .*3-centos.pool.ntp.org
         
-          handlers:
-    - name: restart ntp
-      service: name=ntpd state=restarted
+      handlers:
+   - name: restart ntp
+     service: name=ntpd state=restarted
