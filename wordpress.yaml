@@ -12,14 +12,7 @@
         
     - name: Rename Site directory
       copy:
-        remote_src: True 
-        src: /usr/share/nginx/html/wordpress
-        dest: /usr/share/nginx/html/mynginxweb.local
-        
-    - name: Recursively remove wordpress directory
-      file:
-        path: /usr/share/nginx/html/wordpress
-        state: absent
+        command: mv /usr/share/nginx/html/wordpress /usr/share/nginx/html/mynginxweb.local
 
     - name: Restart Nginx
       service:
