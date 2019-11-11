@@ -10,9 +10,25 @@
         dest: /usr/share/nginx/html/
         remote_src: yes
         
-    - name: Rename Site directory
+    - name: Create a New Directory using file
+      file:
+        path: /usr/share/nginx/html/mynginxweb.local
+        state: directory
+        owner: root
+        group: root
+        mode: 0755
+      
+    - name: Copy wordpress files into new website directory
       copy:
-        command: mv /usr/share/nginx/html/wordpress /usr/share/nginx/html/mynginxweb.local
+        src: /usr/share/nginx/html/*
+        dest: /usr/share/nginx/html/mynginxweb.local
+        remote_src: yes
+        recurse: yes
+      
+    - name: Recursively remove wordpress directory
+      file:
+        path: /usr/share/nginx/html/wordpress
+        state: absent
 
     - name: Restart Nginx
       service:
