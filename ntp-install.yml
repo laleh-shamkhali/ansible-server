@@ -1,0 +1,30 @@
+---
+- hosts: all
+
+  tasks:
+
+  - name: Install ntp
+    yum:
+      name: ntpdate
+      state: latest
+      
+  - name: ensure ntp is running (and enable it at boot)
+    service: name=ntpd state=started enabled=yes
+    
+    tasks:
+  - name: Commenting default server config using the regualr expressions in Ansible.
+    replace:
+      path: /etc/ntp.conf
+      regexp: '(.*centos.pool.ntp.org.*)'
+      replace: '#\1'
+      
+        tasks:
+    - name: Ansible insert a line after centos.pool.ntp.org
+      lineinfile:
+        path: /etc/hosts
+        line: 'server 192.168.100.12 iburst'
+        insertbefore: .*3-centos.pool.ntp.org
+        
+          handlers:
+    - name: restart ntp
+      service: name=ntpd state=restarted
