@@ -30,6 +30,6 @@
           state: present  
         register: lineinfileexample
          
-    handlers:
-    - name: restart ntp
-      service: name=ntpd state=restarted
+   handlers:
+   - name: restart ntp
+     service: name=ntpd state=restarted
