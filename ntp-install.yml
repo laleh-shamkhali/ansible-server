@@ -17,14 +17,19 @@
       path: /etc/ntp.conf
       regexp: '(.*centos.pool.ntp.org.*)'
       replace: '#\1'
-      
-   tasks:
-   - name: Ansible insert a line after centos.pool.ntp.org
-     lineinfile:
-       path: /etc/ntp.conf
-       line: 'server 192.168.100.34 iburst'
-       insertafter: .*3-centos.pool.ntp.org
-        
+  
+  tasks:
+      - name: "Example1: Validate if a String or line is present in the file"
+        become: yes
+        tags: lineinfilecentospool
+        lineinfile:
+          path: /etc/ntp.conf
+          insertafter: "^3-centos.pool.ntp.org+" 
+          line: "server 192.168.100.34 iburst"
+          firstmatch: yes
+          state: present  
+        register: lineinfileexample
+         
     handlers:
     - name: restart ntp
       service: name=ntpd state=restarted
