@@ -20,10 +20,10 @@
       
     - name: Copy wordpress files into new website directory
       copy:
-        src: /usr/share/nginx/html/*
+        src: /usr/share/nginx/html/wordpress/*
         dest: /usr/share/nginx/html/mynginxweb.local
         remote_src: yes
-        recurse: yes
+
       
     - name: Recursively remove wordpress directory
       file:
