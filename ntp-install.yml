@@ -5,7 +5,7 @@
 
   - name: Install ntp
     yum:
-      name: ntpdate
+      name: ntp
       state: latest
       
   - name: ensure ntp is running (and enable it at boot)
