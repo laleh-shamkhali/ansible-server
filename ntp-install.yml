@@ -20,7 +20,6 @@
           insertafter: "^3-centos.pool.ntp.org+" 
           line: 'Server={{ ntp_server }} iburst'
           firstmatch: yes
-          state: present  
        
   - name: ensure ntp is running (and enable it at boot)
     service: name=ntpd state=started enabled=yes 
