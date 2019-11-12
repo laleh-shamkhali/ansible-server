@@ -30,10 +30,8 @@
           state: present  
         register: lineinfileexample
         
-     tasks:
-        handlers:
-        - name: restart ntpd
-          service:
-                name: ntpd
-                enabled: yes
-                state: restarted
+      - name: Restart service httpd, in all cases
+        service:
+            name: ntpd
+            state: restarted
+
