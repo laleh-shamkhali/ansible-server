@@ -3,11 +3,10 @@
 
   tasks:
 
-  - name: Install NTP
-    yum: 
-      name: ntp 
-      state: installed 
-      tags: ntp
+	- name: Install ntp
+    yum:
+      name: ntp
+      state: latest
       
   - name: ensure ntp is running (and enable it at boot)
     service: name=ntpd state=started enabled=yes
