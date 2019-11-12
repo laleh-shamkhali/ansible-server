@@ -1,6 +1,12 @@
 ---
 - hosts: all
 
+  tasks:
+  - name: Commenting default server config using the regualr expressions in Ansible.
+    replace:
+      path: /etc/ntp.conf
+      regexp: '(.*centos.pool.ntp.org.*)'
+      replace: '#\1'
   
   tasks:
   - name: "Example1: Validate if a String or line is present in the file"
