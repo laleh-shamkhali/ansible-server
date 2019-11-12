@@ -8,10 +8,3 @@
       
   - name: ensure ntp is running (and enable it at boot)
     service: name=ntpd state=started enabled=yes
-    
-  tasks:
-  - name: Commenting default server config using the regualr expressions in Ansible.
-    replace:
-      path: /etc/ntp.conf
-      regexp: '(.*centos.pool.ntp.org.*)'
-      replace: '#\1'
