@@ -9,6 +9,7 @@
   - name: ensure ntp is running (and enable it at boot)
     service: name=ntpd state=started enabled=yes
     
+  - hosts: all
   tasks:
   - name: Commenting default server config using the regualr expressions in Ansible.
     replace:
