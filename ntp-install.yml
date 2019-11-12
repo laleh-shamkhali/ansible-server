@@ -15,12 +15,13 @@
       path: /etc/ntp.conf
       regexp: '(.*centos.pool.ntp.org.*)'
       replace: '#\1'
-    
+  
+  tasks:
   - name: "Example1: Validate if a String or line is present in the file"
     become: yes
     tags: lineinfilecentospool
     lineinfile:
-      dest: /etc/ntp.conf
+      path: /etc/ntp.conf
       insertafter: "(.*3-centos.pool.ntp.org.*)" 
       line: "server 192.168.100.34 iburst"
       firstmatch: yes
