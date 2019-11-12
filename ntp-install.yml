@@ -27,7 +27,7 @@
       firstmatch: yes
       state: present  
       
-   - name: Restart service httpd, in all cases
-     service:
-       name: ntpd
-       state: restarted
+  - name: Restart service httpd, in all cases
+    service:
+      name: ntpd
+      state: restarted
