@@ -26,6 +26,6 @@
       line: "server 192.168.100.34 iburst"
       firstmatch: yes
       state: present  
-      register: lineinfileexample
+      
  
 
