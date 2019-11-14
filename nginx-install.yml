@@ -46,7 +46,7 @@
       regexp: '(.*user = apache.*)'
       replace: 'user = nginx'
  
- - name: define nginx as a gorup in php-fpm config file     
+  - name: define nginx as a gorup in php-fpm config file     
     replace:
       path: /etc/php-fpm.d/www.conf
       regexp: '(.*group = apache.*)'
