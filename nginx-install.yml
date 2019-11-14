@@ -19,10 +19,15 @@
       src: /static_files/index.html
       dest: /usr/share/nginx/html/index.html
       
-  - name: Insert config file 
+  - name: Insert nginx config file 
     template:
       src: /static_files/mynginxweb.local.conf
       dest: /etc/nginx/conf.d/mynginxweb.local.conf
+      
+  - name: Insert fastcgi config file 
+    template:
+      src: /static_files/fastcgi.conf
+      dest: /etc/nginx/fastcgi.conf
       
   - name: Rename the default.conf file 
     copy: 
