@@ -14,7 +14,7 @@
     lineinfile:
       path: /etc/ntp.conf
       insertafter: "(.*3.centos.pool.ntp.org.*)" 
-      line: "server 192.168.100.34 iburst"
+      line: "server XXX.XXX.XXX.XXX iburst"
       firstmatch: yes
       state: present  
       
