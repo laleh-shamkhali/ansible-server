@@ -48,7 +48,7 @@
   - replace:
       path: /etc/php-fpm.d/www.conf
       regexp: '(.*group = .*)'
-      replace: 'group = nginx'
+      replace: 'group = nginx'  
 	   
   - lineinfile:
       path: /etc/php.ini
