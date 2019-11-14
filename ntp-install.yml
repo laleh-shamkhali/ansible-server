@@ -10,7 +10,7 @@
       name: ntp
       state: latest
       
-  - lineinfile:
+  - replace:
       path: /etc/ntp.conf
       regexp: '(.*centos.pool.ntp.org.*)'
       replace: '#\1'
