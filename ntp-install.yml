@@ -17,8 +17,8 @@
   
   - lineinfile:
       path: /etc/ntp.conf
-      insertafter: '^3-centos.pool.ntp.org+' 
-      line: 'Server={{ ntp_server }} iburst'
+      insertafter: "(.*3.centos.pool.ntp.org.*)" 
+      line: "server 192.168.100.34 iburst"
       firstmatch: yes
       state: present
        
