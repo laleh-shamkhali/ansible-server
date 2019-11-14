@@ -42,10 +42,10 @@
     
   - replace:
       path: /etc/php-fpm.d/www.conf
-      regexp: '(.*user = nginx.*)'
+      regexp: '(.*user = .*)'
       replace: 'user = nginx'  
-      regexp: '(.*user = nginx.*)'
-      replace: 'user = nginx'
+      regexp: '(.*group = .*)'
+      replace: 'group = nginx'
 	   
   - lineinfile:
       path: /etc/php.ini
