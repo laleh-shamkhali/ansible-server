@@ -43,12 +43,12 @@
   - name: define nginx as a user/gorup in php-fpm config file
     replace:
       path: /etc/php-fpm.d/www.conf
-      regexp: '(.*user = .*)'
+      regexp: '(.*user =.*)'
       replace: 'user = nginx'  
       
     replace:
       path: /etc/php-fpm.d/www.conf
-      regexp: '(.*group = .*)'
+      regexp: '(.*group =.*)'
       replace: 'group = nginx' 
       
   - name: config php.ini file
