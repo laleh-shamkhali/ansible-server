@@ -50,7 +50,8 @@
       regexp: '(.*group = .*)'
       replace: 'group = nginx'  
 	   
-  - lineinfile:
+  - name: config php.ini file
+    lineinfile:
       path: /etc/php.ini
       insertafter: "(.*cgi.fix_pathinfo=.*)" 
       line: "cgi.fix_pathinfo=0"
