@@ -20,7 +20,7 @@
       - php-pdo
       - php-gd
       - php-mbstring
-      - php73-fpm
+      - php-fpm
 
   - name: Start php-fpm
     service: name=php-fpm state=started enabled=yes
