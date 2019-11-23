@@ -18,12 +18,12 @@
          - php-mbstring
          - php-fpm
 
-     - name: restart php-fpm
-       service:
-       name: php-fpm
-       state: restarted
+    - name: Start php-fpm
+      service:
+        name: php-fpm
+        state: started
   
      - name: restart nginx
        service:
-       name: nginx
-       state: restarted
+         name: nginx
+         state: restarted
