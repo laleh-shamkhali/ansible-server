@@ -19,11 +19,9 @@
          - php-fpm
 
     - name: Start php-fpm
+      service: name=php-fpm state=started enabled=yes
+
+    - name: restart nginx
       service:
-        name: php-fpm
-        state: started
-  
-     - name: restart nginx
-       service:
-         name: nginx
-         state: restarted
+        name: nginx
+        state: restarted
