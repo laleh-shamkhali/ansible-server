@@ -9,7 +9,7 @@
     get_url: url=http://rpms.remirepo.net/enterprise/7/remi/x86_64//php73-php-7.3.12-1.el7.remi.x86_64.rpm dest=/root/  
   - name: install remi repo rpm
     yum: name=/root/php73-php-7.3.12-1.el7.remi.x86_64.rpm state=present
-    yum: --enablerepo=remi
+    yum: enablerepo=remi
 
   - name: install php
     yum: name={{item}} state=installed
