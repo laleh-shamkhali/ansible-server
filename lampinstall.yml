@@ -2,7 +2,8 @@
 - hosts: all
 
   tasks:
-    - name: install php
+
+  - name: install php
       yum: name={{item}} state=installed
       with_items:  
       - php
@@ -12,16 +13,16 @@
       - php-mbstring
       - php-fpm
       
-    - name: copy file
+  - name: copy file
       shell: echo "<?php phpinfo (); ?>" > /usr/share/nginx/html/info.php
 
-    - name: install mariadb
+  - name: install mariadb
       yum: name={{item}} state=installed
       with_items:
       - mariadb-server
       - mariadb
     
-    - name: restart nginx
+  - name: restart nginx
       service:
         name: nginx
         state: restarted
