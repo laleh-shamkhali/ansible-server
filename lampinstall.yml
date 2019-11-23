@@ -2,7 +2,6 @@
 - hosts: all
 
   tasks:
-
     - name: install php
       yum: name={{item}} state=installed
       with_items:  
