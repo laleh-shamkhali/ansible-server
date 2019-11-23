@@ -27,7 +27,7 @@
     service: name=php-fpm state=started enabled=yes
       
   - name: copy file
-      shell: echo "<?php phpinfo (); ?>" > /usr/share/nginx/html/info.php
+    shell: echo "<?php phpinfo (); ?>" > /usr/share/nginx/html/info.php
 
   - name: install mariadb
       yum: name={{item}} state=installed
@@ -35,7 +35,7 @@
       - mariadb-server
       - mariadb
     
-  - name: restart nginx
-      service:
-        name: nginx
-        state: restarted
+#  - name: restart nginx
+#      service:
+#        name: nginx
+#        state: restarted
