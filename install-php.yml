@@ -8,15 +8,15 @@
      - name: install remi repo rpm
        yum: name=/root/remi-release-7.rpm state=present
 
-      - name: install php
+     - name: install php
        yum: name={{item}} state=installed
        with_items:  
-       - php
-       - php-mysql
-       - php-pdo
-       - php-gd
-       - php-mbstring
-       - php-fpm
+         - php
+         - php-mysql
+         - php-pdo
+         - php-gd
+         - php-mbstring
+         - php-fpm
 
       - name: restart php-fpm
         service:
