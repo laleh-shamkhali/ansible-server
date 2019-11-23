@@ -30,8 +30,8 @@
     shell: echo "<?php phpinfo (); ?>" > /usr/share/nginx/html/info.php
 
   - name: install mariadb
-      yum: name={{item}} state=installed
-      with_items:
+    yum: name={{item}} state=installed
+    with_items:
       - mariadb-server
       - mariadb
     
