@@ -25,7 +25,7 @@
       - mariadb-server
       - mariadb
     
-    - name: restart httpd
+    - name: restart nginx
       service:
-        name: httpd
+        name: nginx
         state: restarted
