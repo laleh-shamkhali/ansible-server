@@ -17,7 +17,7 @@
       - php-fpm
       
     - name: copy file
-      shell: echo "<?php phpinfo (); ?>" > /var/www/html/info.php
+      shell: echo "<?php phpinfo (); ?>" > /usr/share/nginx/html/info.php
 
     - name: install mariadb
       yum: name={{item}} state=installed
