@@ -15,12 +15,12 @@
   - name: install php
     yum: name={{item}} state=installed
     with_items:  
-      - php
-      - php-mysql
-      - php-pdo
-      - php-gd
-      - php-mbstring
-      - php-fpm
+      - php73
+      - php73-mysql
+      - php73-pdo
+      - php73-gd
+      - php73-mbstring
+      - php73-fpm
 
   - name: Start php-fpm
     service: name=php-fpm state=started enabled=yes
