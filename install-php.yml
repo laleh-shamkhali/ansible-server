@@ -16,7 +16,7 @@
     yum: name={{item}} state=installed
     with_items:  
       - php73
-      - php73-mysql
+      - php-mysql
       - php73-pdo
       - php73-gd
       - php73-mbstring
