@@ -19,7 +19,7 @@
       - php-mysql
       - php-pdo
       - php-gd
-      - php73-mbstring
+      - php-mbstring
       - php73-fpm
 
   - name: Start php-fpm
