@@ -6,7 +6,7 @@
     yum: name=epel-release.noarch state=latest
 
   - name: install remi repo rpm
-    yum: name=/root/remi-release-7.rpm state=present
+    yum: name=http://rpms.remirepo.net/enterprise/remi-release-7.rpm
 
   - name: install php
     yum: name={{item}} state=installed
