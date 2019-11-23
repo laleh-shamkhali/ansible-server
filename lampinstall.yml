@@ -14,6 +14,7 @@
       - php-pdo
       - php-gd
       - php-mbstring
+      - php-fpm
       
     - name: copy file
       shell: echo "<?php phpinfo (); ?>" > /var/www/html/info.php
