@@ -2,26 +2,26 @@
 - hosts: all
 
   tasks:
-     - name: yum install epel
-       yum: name=epel-release.noarch state=latest
+  - name: yum install epel
+    yum: name=epel-release.noarch state=latest
 
-     - name: install remi repo rpm
-       yum: name=/root/remi-release-7.rpm state=present
+  - name: install remi repo rpm
+    yum: name=/root/remi-release-7.rpm state=present
 
-     - name: install php
-       yum: name={{item}} state=installed
-       with_items:  
-         - php
-         - php-mysql
-         - php-pdo
-         - php-gd
-         - php-mbstring
-         - php-fpm
+ - name: install php
+   yum: name={{item}} state=installed
+   with_items:  
+     - php
+     - php-mysql
+     - php-pdo
+     - php-gd
+     - php-mbstring
+     - php-fpm
 
-    - name: Start php-fpm
-      service: name=php-fpm state=started enabled=yes
+ - name: Start php-fpm
+   service: name=php-fpm state=started enabled=yes
 
-    - name: restart nginx
-      service:
-        name: nginx
-        state: restarted
+- name: restart nginx
+  service:
+    name: nginx
+    state: restarted
