@@ -16,7 +16,7 @@
   - name: install php
     yum: name={{item}} state=installed
     with_items:  
-      - php73
+      - php
       - php-mysql
       - php-pdo
       - php-gd
