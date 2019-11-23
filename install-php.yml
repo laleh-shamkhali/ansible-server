@@ -17,7 +17,7 @@
     with_items:  
       - php73
       - php-mysql
-      - php73-pdo
+      - php-pdo
       - php73-gd
       - php73-mbstring
       - php73-fpm
