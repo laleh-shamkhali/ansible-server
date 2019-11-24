@@ -1,5 +1,6 @@
 ---
 - hosts: all
+
   tasks:
 
   - name: Ansible Insert multiple lines using blockinfile
