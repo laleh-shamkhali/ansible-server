@@ -27,8 +27,8 @@
 
   - name: add port to firewalld service
     firewalld:
-    service: ntp
-    permanent: yes
-    state: enabled
+      service: ntp
+      permanent: yes
+      state: enabled
   - name: firewalld reload
     command: firewall-cmd --reload
