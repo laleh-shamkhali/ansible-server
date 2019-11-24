@@ -3,23 +3,23 @@
 
   tasks:
 
-  - name: Ansible Insert multiple lines using blockinfile
-    file:
-      path: "/etc/yum.repos.d/MariaDB.repo"
-      state: touch
-    blockinfile:
-      dest: /etc/yum.repos.d/MariaDB.repo
-      block: |
-        [mariadb]
-        name = MariaDB
-        baseurl = http://yum.mariadb.org/10.1/centos7-amd64
-        gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
-        gpgcheck=1s
-      backup: yes
+    - name: Ansible Insert multiple lines using blockinfile
+      file:
+        path: "/etc/yum.repos.d/MariaDB.repo"
+        state: touch
+      blockinfile:
+        dest: /etc/yum.repos.d/MariaDB.repo
+        block: |
+          [mariadb]
+          name = MariaDB
+          baseurl = http://yum.mariadb.org/10.1/centos7-amd64
+          gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
+          gpgcheck=1s
+        backup: yes
 
-  - name: install mariadb 10
-    yum: name={{item}} state=installed
-    with_items:
-      - mariadb-server
-      - mariadb
-    service: name=mariadb state=started enabled=yes
+    - name: install mariadb 10
+      yum: name={{item}} state=installed
+      with_items:
+        - mariadb-server
+        - mariadb
+      service: name=mariadb state=started enabled=yes
