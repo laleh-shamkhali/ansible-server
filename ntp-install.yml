@@ -25,7 +25,7 @@
   - name: ensure ntp is running (and enable it at boot)
     service: name=ntpd state=started enabled=yes 
 
-  - name: add port to firewalld service
+  - name: add service to firewalld service
     firewalld:
       service: ntp
       permanent: yes
