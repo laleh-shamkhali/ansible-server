@@ -16,9 +16,9 @@
         gpgcheck=1s
       backup: yes
 
-  #- name: install mariadb 10
-   # yum: name={{item}} state=installed
-    #with_items:
-     # - mariadb-server
-      #- mariadb
-      #service: name=mariadb state=started enabled=yes
+  - name: install mariadb 10
+    yum: name={{item}} state=installed
+    with_items:
+      - MariaDB-server
+      - MariaDB-client
+      service: name=mariadb state=started enabled=yes
