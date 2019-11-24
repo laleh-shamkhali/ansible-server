@@ -15,14 +15,13 @@
     service: name=httpd state=started enabled=yes
   - name: add services to firewalld service
     firewalld:
-    service: http
-    permanent: yes
-    state: enabled
+      service: http
+      permanent: yes
+      state: enabled
   - firewalld:
-    service: https
-    permanent: yes
-    state: enabled
+      service: https
+      permanent: yes
+      state: enabled
   handlers:
     - name: restart apache
       service: name=httpd state=restarted
-      
