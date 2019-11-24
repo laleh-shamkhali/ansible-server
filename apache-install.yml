@@ -13,6 +13,12 @@
     - restart apache
   - name: ensure apache is running (and enable it at boot)
     service: name=httpd state=started enabled=yes
+  - lineinfile:
+      path: /etc/httpd/conf/httpd.conf
+      insertafter: "(.TypesConfig /etc/mime.types.*)" 
+      line: "AddType text/plain php"
+      firstmatch: yes
+      state: present
   - name: add services to firewalld service
     firewalld:
       service: http
