@@ -22,6 +22,8 @@
       service: https
       permanent: yes
       state: enabled
+  - name: firewalld reload
+    command: firewall-cmd --reload
   handlers:
     - name: restart apache
       service: name=httpd state=restarted
