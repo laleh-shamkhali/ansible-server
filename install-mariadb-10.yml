@@ -21,4 +21,5 @@
     with_items:
       - MariaDB-server
       - MariaDB-client
+  - name: start and enable service
     service: name=mariadb state=started enabled=yes
