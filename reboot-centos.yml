@@ -11,7 +11,7 @@
     wait_for_connection:
        timeout: 600
        delay: 20
-     register: reboot_result
+    register: reboot_result
   - name: reboot time
     debug:
       msg: "The system rebooted in {{ reboot_result.elapsed }} seconds."
