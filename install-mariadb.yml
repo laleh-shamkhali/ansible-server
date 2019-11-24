@@ -1,0 +1,10 @@
+---
+- hosts: all
+
+  tasks:
+
+  - name: install mariadb
+    yum: name={{item}} state=installed
+    with_items:
+      - mariadb-server
+      - mariadb
