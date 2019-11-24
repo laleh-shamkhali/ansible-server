@@ -11,7 +11,7 @@
         gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
         gpgcheck=1s
       backup: yes
-      
+
   - name: install mariadb 10
     yum: name={{item}} state=installed
     with_items:
