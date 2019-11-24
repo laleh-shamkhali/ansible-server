@@ -13,6 +13,15 @@
     - restart apache
   - name: ensure apache is running (and enable it at boot)
     service: name=httpd state=started enabled=yes
+  - firewalld:
+    service: http
+    permanent: yes
+    state: enabled
+  - firewalld:
+    service: https
+    permanent: yes
+    state: enabled
   handlers:
     - name: restart apache
       service: name=httpd state=restarted
+      
