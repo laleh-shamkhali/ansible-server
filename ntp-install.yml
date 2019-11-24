@@ -1,6 +1,7 @@
 ---
- hosts: all  
- vars:
+- name: Install NTP
+  hosts: all  
+  vars:
     ntp_server: "192.168.100.34"
     
   tasks:
