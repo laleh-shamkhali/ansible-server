@@ -47,3 +47,11 @@
 
   - name: Starting the Zabbix Agent
     service: name=zabbix-agent state=started enabled=yes
+
+  - name: add port to firewalld service
+    firewalld:
+      port: 1005/tcp
+      permanent: yes
+      state: enabled
+  - name: firewalld reload
+    command: firewall-cmd --reload
