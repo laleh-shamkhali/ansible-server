@@ -15,6 +15,6 @@
   - name: install mariadb
     yum: name={{item}} state=installed
     with_items:
-      - MariaDB-server 
-      - MariaDB-client
+      - mariadb-server
+      - mariadb
     service: name=mariadb state=started enabled=yes
