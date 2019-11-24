@@ -1,5 +1,6 @@
 ---
 - hosts: all
+  tasks:
   - name: remove the Apache package
     yum:
       name: httpd
