@@ -23,6 +23,9 @@
       - php-mbstring
       - php-fpm
 
+  - name: copy file
+    shell: echo "<?php phpinfo (); ?>" > /usr/share/nginx/html/info.php
+    shell: echo "<?php phpinfo (); ?>" > /var/www/html/info.php
   - name: Start php-fpm
     service: name=php-fpm state=started enabled=yes
 
