@@ -1,12 +1,11 @@
-    ---
-    - name: install updates using yum
-      hosts: all
-
-      yum:
-        name: "*"
-        state: latest
-        
-    - name: Put SELinux in permissive mode, logging actions that would be blocked.
-      selinux:
-        policy: targeted
-        state: permissive
+---
+- name: install updates using yum
+  hosts: all
+  yum:
+    name: "*"
+    state: latest
+ 
+- name: Put SELinux in permissive mode, logging actions that would be blocked.
+  selinux:
+     policy: targeted
+     state: permissive
