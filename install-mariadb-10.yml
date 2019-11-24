@@ -19,7 +19,7 @@
   - name: install mariadb 10
     yum: name={{item}} state=installed
     with_items:
-      - mariaDB-server
-      - mariaDB-client
+      - mariadb-server
+      - mariadb-client
   - name: start and enable service
     service: name=mariadb state=started enabled=yes
