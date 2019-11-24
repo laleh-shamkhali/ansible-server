@@ -3,7 +3,7 @@
   tasks:
 
   - name: Ansible Insert multiple lines using blockinfile
-      file:
+    file:
       path: "/etc/yum.repos.d/MariaDB.repo"
       state: touch
     blockinfile:
