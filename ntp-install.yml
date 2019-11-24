@@ -29,6 +29,6 @@
     firewalld:
     source: 192.168.100.34/32
     permanent: yes
-    state: enabled/
+    state: enabled
   - name: firewalld reload
     command: firewall-cmd --reload
