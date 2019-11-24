@@ -11,7 +11,7 @@
     #yum: name=/root/php73-php-7.3.12-1.el7.remi.x86_64.rpm state=present
     yum: 
       name: http://rpms.remirepo.net/enterprise/remi-release-7.rpm 
-      state:state: present
+      state: present
 
   - name: enable remi-php73
     shell: yum-config-manager --enable remi-php73
