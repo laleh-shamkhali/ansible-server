@@ -1,5 +1,5 @@
 ---
-- name: install updates using yum
+- name: Install updates 
   hosts: all
   yum:
     name: "*"
