@@ -69,3 +69,15 @@
     service:
       name: php-fpm
       state: restarted
+
+  - name: add services to firewalld service
+    firewalld:
+      service: http
+      permanent: yes
+      state: enabled
+  - firewalld:
+      service: https
+      permanent: yes
+      state: enabled
+  - name: firewalld reload
+    command: firewall-cmd --reload
