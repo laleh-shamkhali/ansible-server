@@ -11,15 +11,15 @@
       block: |
         [mariadb]
         name = MariaDB
-        baseurl = http://yum.mariadb.org/10.1/centos7-amd64
+        baseurl = http://yum.mariadb.org/10.3/centos7-amd64
         gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
-        gpgcheck=1s
+        gpgcheck=1
       backup: yes
 
   - name: install mariadb 10
     yum: name={{item}} state=installed
     with_items:
-      - mariadb-server
-      - mariadb
+      - MariaDB-server 
+      - MariaDB-client
   - name: start and enable service
     service: name=mariadb state=started enabled=yes
