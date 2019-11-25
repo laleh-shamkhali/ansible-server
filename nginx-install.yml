@@ -59,7 +59,18 @@
       line: "cgi.fix_pathinfo=0"
       firstmatch: yes
       state: present 
-    
+  
+  - name: Create a New Directory using file
+      file:
+        path: /usr/share/nginx/html/mytest.local
+        state: directory
+        owner: nginx
+        group: nginx
+        mode: 0755
+        
+ - name: creat php file
+    shell: echo "<?php phpinfo (); ?>" > /usr/share/nginx/html/mytest.local/info.php
+
   - name: Start NGiNX
     service:
       name: nginx
