@@ -6,7 +6,7 @@
   tasks:
   - name: Add epel-release repo
     yum:
-      name: epel-release
+      name: http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
       state: present
 
   - name: Install nginx
