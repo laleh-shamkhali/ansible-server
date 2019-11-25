@@ -67,9 +67,9 @@
       owner: nginx
       group: nginx
       mode: 0755
-   
- - name: creat php file
-   shell: echo "<?php phpinfo (); ?>" > /usr/share/nginx/html/mytest.local/info.php
+
+  - name: creat php file
+    shell: echo "<?php phpinfo (); ?>" > /usr/share/nginx/html/mytest.local/info.php
 
   - name: Start NGiNX
     service:
