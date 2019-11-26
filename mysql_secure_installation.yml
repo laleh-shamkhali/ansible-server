@@ -2,14 +2,14 @@
 
 # create root .my.cnf config file
 - name: Add .my.cnf
-  template: src=my.cnf.j2 dest=/root/.my.cnf owner=root group=root mode=0600
+  template: src=/etc/my.cnf dest=/etc/.my.cnf owner=root group=root mode=0600
 
 # Set root password
 # UPDATE mysql.user SET Password=PASSWORD('mysecret') WHERE User='root';
 # FLUSH PRIVILEGES;
 
 - name: Set root Password
-  mysql_user: login_password={{ mysql_root_password }} check_implicit_admin=yes name=root host={{ item }} password={{ mysql_root_password }} state=present 
+  mysql_user: login_password={{ @Aa123456 }} check_implicit_admin=yes name=root host={{ item }} password={{ @Aa123456 }} state=present 
   with_items:
     - localhost
     - 127.0.0.1
