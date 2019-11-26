@@ -62,14 +62,22 @@
   
   - name: Create a New Directory using file
     file:
-      path: /usr/share/nginx/html/mytest.local
+      path: /usr/share/nginx/html/mynginxweb.local
       state: directory
       owner: nginx
       group: nginx
       mode: 0755
 
   - name: creat php file
-    shell: echo "<?php phpinfo (); ?>" > /usr/share/nginx/html/mytest.local/info.php
+    shell: echo "<?php phpinfo (); ?>" > /usr/share/nginx/html/mynginxweb.local/index.php
+
+ - name: Recursively change ownership of a directory
+   file:
+     path: /etc/foo
+     state: directory
+     recurse: yes
+     owner: nginx
+     group: nginx
 
   - name: Start NGiNX
     service:
