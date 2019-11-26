@@ -71,13 +71,13 @@
   - name: creat php file
     shell: echo "<?php phpinfo (); ?>" > /usr/share/nginx/html/mynginxweb.local/index.php
 
- - name: Recursively change ownership of a directory
-   file:
-     path: /usr/share/nginx/html/mynginxweb.local
-     state: directory
-     recurse: yes
-     owner: nginx
-     group: nginx
+  - name: Recursively change ownership of a directory
+    file:
+      path: /usr/share/nginx/html/mynginxweb.local
+      state: directory
+      recurse: yes
+      owner: nginx
+      group: nginx
 
   - name: Start NGiNX
     service:
