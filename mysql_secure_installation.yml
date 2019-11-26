@@ -50,11 +50,11 @@
     #command: 'mysql -ne "{{ item }}"'
     #with_items:
       #- DROP DATABASE IF EXISTS test
-      - DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%'
+      #- DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%'
     #changed_when: False
 
   #- name: Reload privilege tables
     #command: 'mysql -ne "{{ item }}"'
     #with_items:
-      - FLUSH PRIVILEGES
+      #- FLUSH PRIVILEGES
     #changed_when: False
