@@ -15,7 +15,7 @@
   - name: Create database user using hashed password with all database privileges
     mysql_user:
       name: wpuser
-      password: 'wpuserpassword'
+      password: wpuserpassword
       encrypted: yes
       priv: 'wordpress.*:ALL,GRANT'
       state: present
