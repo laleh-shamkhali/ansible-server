@@ -8,12 +8,7 @@
 # create root .my.cnf config file
   - name: Add .my.cnf
     #template: src=/etc/my.cnf dest=/root/.my.cnf owner=root group=root mode=0600
-    template:
-      src: /etc/my.cnf
-      dest: /root/.my.cnf
-      owner: root 
-      group: root 
-      mode: 0600
+    command: cp /etc/my.cnf /root/.my.cnf
 
 # Set root password
 # UPDATE mysql.user SET Password=PASSWORD('mysecret') WHERE User='root';
