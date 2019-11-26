@@ -26,11 +26,11 @@
       #- FLUSH PRIVILEGES
     #changed_when: False
 
-  - name: Remove anonymous users
-    command: 'mysql -ne "{{ item }}"'
-    with_items:
-      - DELETE FROM mysql.user WHERE User=''
-    changed_when: False
+  #- name: Remove anonymous users
+    #command: 'mysql -ne "{{ item }}"'
+    #with_items:
+      #- DELETE FROM mysql.user WHERE User=''
+    #changed_when: False
 
   - name: Disallow root login remotely
     command: 'mysql -ne "{{ item }}"'
