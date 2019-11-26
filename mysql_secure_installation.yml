@@ -1,7 +1,7 @@
 ---
 - hosts: all
   vars:
-    mysql_root_password: @Aa123456
+    mysql_root_password: '@Aa123456'
   tasks:
 # create root .my.cnf config file
   - name: Add .my.cnf
