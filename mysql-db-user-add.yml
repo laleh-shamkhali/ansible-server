@@ -1,22 +1,21 @@
 ---
 - hosts: all
-tasks:
-    
-- name: Delete database with name 'wordpress'
-  mysql_db:
-    name: wordpress
-    state: absent
+  tasks:
 
-- name: Create a new database with name 'wordpress'
-  mysql_db:
-    name: wordpress
-    state: present
+  - name: Delete database with name 'wordpress'
+    mysql_db:
+      name: wordpress
+      state: absent
 
-- name: Create database user using hashed password with all database privileges
-  mysql_user:
-    name: wpuser
-    password: '2e19fa482e8e8de59fdcdbf76ffe6179'
-    encrypted: yes
-    priv: 'wordpress.*:ALL,GRANT'
-    state: present
-  
+  - name: Create a new database with name 'wordpress'
+    mysql_db:
+      name: wordpress
+      state: present
+
+  - name: Create database user using hashed password with all database privileges
+    mysql_user:
+      name: wpuser
+      password: '2e19fa482e8e8de59fdcdbf76ffe6179'
+      encrypted: yes
+      priv: 'wordpress.*:ALL,GRANT'
+      state: present
