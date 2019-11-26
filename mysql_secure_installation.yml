@@ -1,5 +1,5 @@
 ---
-tasks:
+- hosts: all
 # create root .my.cnf config file
 - name: Add .my.cnf
   template: src=/etc/my.cnf dest=/etc/.my.cnf owner=root group=root mode=0600
