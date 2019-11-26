@@ -54,6 +54,7 @@
         state: directory
         recurse: yes
         owner: nginx
+        group: nginx
 
     - name: Set the correct permissions on Wordpress directories
       command: find /usr/share/nginx/html/mynginxweb.local/ -type d -exec chmod 750 {} \;
