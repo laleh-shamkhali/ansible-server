@@ -16,6 +16,5 @@
     mysql_user:
       name: wpuser
       password: wpuserpassword
-      encrypted: yes
       priv: 'wordpress.*:ALL,GRANT'
       state: present
