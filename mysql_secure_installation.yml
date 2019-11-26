@@ -24,9 +24,12 @@
     mysql_user: name='' host={{ item }} state=absent
     with_items:
       - localhost
-
   - name: remove the test database
     mysql_db: name=test state=absent
+  - name: Disallow root login remotely
+    command: 'mysql -ne "{{ item }}"'
+    with_items:
+      - DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1')
   - name: Reload privilege tables
     command: 'mysql -ne "{{ item }}"'
     with_items:
