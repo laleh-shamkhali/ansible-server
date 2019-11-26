@@ -6,8 +6,14 @@
   - name: Install MySQLdb Python package for secure installations.
     yum: name=MySQL-python state=present
 # create root .my.cnf config file
-  #- name: Add .my.cnf
+  - name: Add .my.cnf
     #template: src=/etc/my.cnf dest=/root/.my.cnf owner=root group=root mode=0600
+    template:
+      src: /etc/my.cnf
+      dest: /root/.my.cnf
+      owner: root 
+      group: root 
+      mode: 0600
 
 # Set root password
 # UPDATE mysql.user SET Password=PASSWORD('mysecret') WHERE User='root';
