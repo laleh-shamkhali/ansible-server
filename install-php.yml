@@ -22,6 +22,7 @@
       - php-gd
       - php-mbstring
       - php-fpm
+      - php-xml
 
   - name: copy file
     shell: echo "<?php phpinfo (); ?>" > /usr/share/nginx/html/info.php
