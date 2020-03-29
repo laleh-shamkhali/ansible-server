@@ -1,7 +1,6 @@
 ---
 - name: create test file
   hosts: all
-  become: true
   
   tasks:
   - name: Ansible create a new file if it doesn't exist example
