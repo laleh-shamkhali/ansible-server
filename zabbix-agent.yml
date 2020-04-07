@@ -51,7 +51,7 @@
 
   - name: add port to firewalld service
     firewalld:
-      port: 1005/tcp
+      port: 10050/tcp
       permanent: yes
       state: enabled
   - name: firewalld reload
