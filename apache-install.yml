@@ -3,14 +3,65 @@
   vars:
     http_port: 80
     max_clients: 200
+    sitename: "mysite.local"
 
   tasks:
-  - name: ensure apache is at the latest version
+  - name: Installing Latest version of Apache
     yum: pkg=httpd state=latest
-  - name: replace default index.html file
-    copy: src=/static_files/index.html dest=/var/www/html/ mode=0644
+  - name: create website directory
+    file:
+      path: "/var/www/html/{{ sitename }}"
+      state: directory
+      owner: apache
+      group: apache
+      mode: '0775'
+
+  - name: create index.html file
+    file:
+      path: "/var/www/html/{{ sitename }}/index.html"
+      state: touch
+      owner: apache
+      group: apache
+      mode: '0644'
+  - name: index.html content
+    blockinfile:
+      path: "/var/www/html/{{ sitename }}/index.html"
+      block: |
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+        <meta charset="utf-8"/>
+        </script>
+        </head>
+        <body>
+        <h1>Apache was started in this host via Ansible</h1><br>
+        <h2>Brought to you by linux-zone.org/forums</h2>
+        </body>
+        </html>
+
+  - name: create virtualhost config file
+    file:
+      path: "/etc/httpd/conf.d/{{ sitename }}.conf"
+      state: touch
+  - name: virtualhost's content
+    blockinfile:
+      path: "/etc/httpd/conf.d/{{ sitename }}.conf"
+      block: |
+        <VirtualHost *:80>
+        ServerAdmin admin@hamrah7.com
+        DocumentRoot /var/www/html/mysite.local/
+        ServerAlias  www.mysite.local
+        ServerName  mysite.local
+
+        ErrorLog /var/www/html/mysite.local/error.log
+        CustomLog /var/www/html/mysite.local/access.log combined
+        LogLevel warn
+
+        </VirtualHost>
+    
     notify:
     - restart apache
+
   - name: ensure apache is running (and enable it at boot)
     service: name=httpd state=started enabled=yes
   - lineinfile:
