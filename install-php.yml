@@ -3,7 +3,7 @@
 
   tasks:
   - name: yum install epel
-    yum: name=epel-release.noarch state=latest
+    yum: name=epel-release state=latest
 
   - name: download remi repo rpm
     yum: 
@@ -29,5 +29,3 @@
     shell: echo "<?php phpinfo (); ?>" > /var/www/html/info.php
   - name: Start php-fpm
     service: name=php-fpm state=started enabled=yes
-
-
