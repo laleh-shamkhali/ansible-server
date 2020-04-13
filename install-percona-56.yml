@@ -1,0 +1,19 @@
+---
+- hosts: all
+  tasks:
+  - name: Installing percona repository
+    yum:
+      name: https://repo.percona.com/yum/percona-release-latest.noarch.rpm
+      state: present
+
+  - name: Installing percona 56
+    yum: name={{item}} state=installed
+    with_items: 
+      - Percona-Server-server-56
+      - Percona-Server-client-56
+      - percona-xtrabackup
+
+  - name: start MYSQL service
+    service: name=mysql state=started 
+  - name:  enable service
+    service: name=mysqld enabled=yes
