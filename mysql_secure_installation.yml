@@ -12,8 +12,6 @@
   - name: update my.cnf content
     blockinfile:
       path: /etc/my.cnf
-#      marker: "<!-- {mark} ANSIBLE MANAGED BLOCK -->"
-#      insertafter: "Percona Server template configuration"
       block: |
         [client]
         user=root
