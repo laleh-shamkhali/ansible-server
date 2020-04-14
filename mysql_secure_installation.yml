@@ -2,12 +2,27 @@
 - hosts: all
   vars:
     mysql_root_password: '@Aa123456'
+
   tasks:
+#  - name: Insert my.cnf config file
+#    template:
+#      src: /etc/ansible/my.cnf
+#      dest: /etc/my.cnf
+
+  - name: update my.cnf content
+    blockinfile:
+      path: /etc/my.cnf
+#      marker: "<!-- {mark} ANSIBLE MANAGED BLOCK -->"
+#      insertafter: "Percona Server template configuration"
+      block: |
+        [client]
+        user=root
+        password='{{ mysql_root_password }}'
+
   - name: Install MySQLdb Python package for secure installations.
     yum: name=MySQL-python state=present
-# create root .my.cnf config file
+    # create root .my.cnf config file
   - name: Add .my.cnf
-    #template: src=/etc/my.cnf dest=/root/.my.cnf owner=root group=root mode=0600
     command: cp /etc/my.cnf /root/.my.cnf
 
 # Set root password
@@ -36,28 +51,3 @@
     with_items:
       - FLUSH PRIVILEGES
     changed_when: False
-
-  #- name: Remove anonymous users
-    #command: 'mysql -ne "{{ item }}"'
-    #with_items:
-      #- DELETE FROM mysql.user WHERE User=''
-    #changed_when: False
-
-  #- name: Disallow root login remotely
-    #command: 'mysql -ne "{{ item }}"'
-    #with_items:
-      #- DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1')
-    #changed_when: False
-
-  #- name: Remove test database and access to it
-    #command: 'mysql -ne "{{ item }}"'
-    #with_items:
-      #- DROP DATABASE IF EXISTS test
-      #- DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%'
-    #changed_when: False
-
-  #- name: Reload privilege tables
-    #command: 'mysql -ne "{{ item }}"'
-    #with_items:
-      #- FLUSH PRIVILEGES
-    #changed_when: False
