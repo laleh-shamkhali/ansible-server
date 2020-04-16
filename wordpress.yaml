@@ -3,6 +3,9 @@
   become: true
   become_user: root
   gather_facts: true
+  vars:
+    sitename: "mysite.local"
+
   tasks:
     - name: Download and Extract WorPress
       unarchive:
@@ -12,7 +15,7 @@
         
     - name: Create a New Directory using file
       file:
-        path: /usr/share/nginx/html/mynginxweb.local
+        path: /usr/share/nginx/html/{{ sitename }}
         state: directory
         owner: root
         group: root
@@ -21,7 +24,7 @@
     - name: Copy wordpress files into new website directory
       copy:
         src: /usr/share/nginx/html/wordpress/
-        dest: /usr/share/nginx/html/mynginxweb.local
+        dest: /usr/share/nginx/html/{{ sitename }}
         remote_src: yes
 
       
@@ -36,28 +39,28 @@
         state: restarted
 
     - name: Copy sample config file
-      command: mv /usr/share/nginx/html/mynginxweb.local/wp-config-sample.php /usr/share/nginx/html/mynginxweb.local/wp-config.php
+      command: mv /usr/share/nginx/html/{{ sitename }}/wp-config-sample.php /usr/share/nginx/html/{{ sitename }}/wp-config.php
 
     - name: Update Wordpress config file
       lineinfile:
-        path: /usr/share/nginx/html/mynginxweb.local/wp-config.php
+        path: /usr/share/nginx/html/{{ sitename }}/wp-config.php
         regexp: "{{item.regexp}}"
         line: "{{item.line}}"
       with_items:
         - {'regexp': "define\\( 'DB_NAME', '(.)+' \\);", 'line': "define( 'DB_NAME', 'wordpress' );"}
         - {'regexp': "define\\( 'DB_USER', '(.)+' \\);", 'line': "define( 'DB_USER', 'wpuser' );"}
-        - {'regexp': "define\\( 'DB_PASSWORD', '(.)+' \\);", 'line': "define( 'DB_PASSWORD', 'wpuserpassword' );"}
+        - {'regexp': "define\\( 'DB_PASSWORD', '(.)+' \\);", 'line': "define( 'DB_PASSWORD', 'wpuserp@ssword2' );"}
 
     - name: Update ownership to Nginx user
       file:
-        path: /usr/share/nginx/html/mynginxweb.local/
+        path: /usr/share/nginx/html/{{ sitename }}/
         state: directory
         recurse: yes
         owner: nginx
         group: nginx
 
     - name: Set the correct permissions on Wordpress directories
-      command: find /usr/share/nginx/html/mynginxweb.local/ -type d -exec chmod 750 {} \;
+      command: find /usr/share/nginx/html/{{ sitename }}/ -type d -exec chmod 750 {} \;
 
     - name: Set the correct permissions for Wordpress files
-      command: find /usr/share/nginx/html/mynginxweb.local/ -type f -exec chmod 640 {} \;
+      command: find /usr/share/nginx/html/{{ sitename }}/ -type f -exec chmod 640 {} \;
